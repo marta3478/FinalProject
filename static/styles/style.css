@@ -1,0 +1,23 @@
+:root {
+    font-size: 28px;
+}
+
+button {
+    font-size: 0.8em;
+    box-shadow: 5px 10px;
+    border: 2px solid black;
+}
+
+div.accomplished {
+    background-color: green;
+    border: 5px solid black;
+    width: 500px;
+    margin: 30px;
+}
+
+div.not-accomplished {
+    background-color: red;
+    border: 5px solid black;
+    width: 500px;
+    margin: 30px;
+}

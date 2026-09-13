@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/styles/style.css">
+</head>
+<body>
+
+<form method="post" action="/">
+    <label for="zadacha">Ваша задача: </label>
+    <input type="text" name="zadacha" id="zadacha">
+    <button type="submit">Отправить</button>
+</form>
+
+{% for element in spisok %}
+    <div {% if element.status_zadachi %}
+         class="accomplished"
+         {% else %}
+         class="not-accomplished"
+         {% endif %}
+    >
+        <p>{{element.text_zadachi}}</p>
+        <span>Задача была поставлена: </span><span>{{element.data_zadachi}}</span> <br>
+        <span>Статус: </span>
+        <span>
+            {% if element.status_zadachi %}
+                Выполнено
+            {% else %}
+                Пока не выполнено
+            {% endif %}
+        </span>
+
+        <form method="post" action="/delete_zadacha/{{element.id_zadachi}}">
+            <button type="submit">Удалить задачу</button>
+        </form>
+
+        <form method="post" action="/change_status_zadachi/{{element.id_zadachi}}">
+            <button type="submit">Пометить задачу сделанной</button>
+        </form>
+    </div>
+{% endfor %}
+
+</body>
+</html>
